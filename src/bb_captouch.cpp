@@ -21,8 +21,9 @@
 int BBCapTouch::init(int iSDA, int iSCL, int iRST, int iINT, uint32_t u32Speed)
 {
 uint8_t ucTemp[4];
-
-    Wire.begin(iSDA, iSCL); // this is specific to ESP32 MCUs
+    Wire.setSCL(iSCL);
+    Wire.setSDA(iSDA);
+    Wire.begin();
     Wire.setClock(u32Speed);
     _iType = -1;
 
